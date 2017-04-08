@@ -10,6 +10,6 @@ ${BUILD_DIR}/${asset} : ${exp}/_assets/${asset}
 	cp $< $@
 
 ${exp}/_assets/${asset} : ${exp}/${script}
-	# OMP_NUM_THREADS=1 forces serial linear algebra.
-	# Redirection to /dev/null is used to avoid script's output.
+	@# OMP_NUM_THREADS=1 forces serial linear algebra.
+	@# Redirection to /dev/null is used to avoid script's output.
 	cd ${<D} && OMP_NUM_THREADS=1 python ${<F} > /dev/null
