@@ -19,8 +19,8 @@ export SAVE_FIGURES := 1
 # Used by matplotlib to determine parameters for plotting.
 export MATPLOTLIBRC := ${CURDIR}/
 
-# Used as a dependency for scripts generating figures.
-export MATPLOTLIB_FILE := ${MATPLOTLIBRC}/matplotlibrc
+# Used as a dependency for scripts that generate figures.
+export matplotlibrc_file := ${MATPLOTLIBRC}/matplotlibrc
 
 RM := rm
 
