@@ -22,7 +22,7 @@ export MATPLOTLIBRC := ${CURDIR}/
 # Used as a dependency for scripts that generate figures.
 export matplotlibrc_file := ${MATPLOTLIBRC}/matplotlibrc
 
-RM := rm
+RM := rm -f
 
 # List of assets.
 assets_list :=
