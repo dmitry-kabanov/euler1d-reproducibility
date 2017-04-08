@@ -1,0 +1,36 @@
+saf.euler1d.common.zndsolver     | I | Start: compute ZND parameters
+saf.euler1d.common.zndsolver     | I | D_CJ: 1.4762147932614997
+saf.euler1d.common.zndsolver     | I | D: 1.4762147932614997
+saf.euler1d.common.zndsolver     | I | Arrhenius prefactor: 198366189730.0483398437500000
+saf.euler1d.common.zndsolver     | I | Reaction length: 33.6894513012499530
+saf.euler1d.common.zndsolver     | I | Finish: compute ZND parameters
+saf.linear.solver                | I | dx=0.050000
+saf.linear.solver                | I | domain_length=34.000000
+saf.linear.solver                | I | Grid resolution is 680
+saf.linear.henrickapproximator   | I | Use Upwind5
+saf.linear.upwind5               | I | Use upwind5_impl_c
+saf.linear.henrickapproximator   | I | Use global Lax-Friedrichs flux
+saf.linear.henrickapproximator   | I | Use NearShockApproximator (Henrick2006 approach)
+saf.euler1d.common.zndsolver     | I | Start ZND structure computation
+saf.euler1d.common.zndsolver     | I | Integrate with VODE (BDF5), tolerances 1e-15
+saf.euler1d.common.zndsolver     | I | Compute steady derivatives for CJ case
+saf.euler1d.common.zndsolver     | I | Validating ZND quantities
+saf.euler1d.common.zndsolver     | I | Finish ZND structure computation
+saf.euler1d.common.zndsolver     | I | Start: compute ZND parameters
+saf.euler1d.common.zndsolver     | I | D_CJ: 1.4762147932614997
+saf.euler1d.common.zndsolver     | I | D: 1.4762147932614997
+saf.euler1d.common.zndsolver     | I | Arrhenius prefactor: 198366189730.0483398437500000
+saf.euler1d.common.zndsolver     | I | Reaction length: 33.6894513012499530
+saf.euler1d.common.zndsolver     | I | Finish: compute ZND parameters
+saf.euler1d.common.zndsolver     | I | Start ZND structure computation
+saf.euler1d.common.zndsolver     | I | Integrate with VODE (BDF5), tolerances 1e-15
+saf.euler1d.common.zndsolver     | I | Compute steady derivatives for CJ case
+saf.euler1d.common.zndsolver     | I | Validating ZND quantities
+saf.euler1d.common.zndsolver     | I | Finish ZND structure computation
+saf.euler1d.linear.rhsevaluator  | W | for LLF make sure that the eigvals are ordered correctly.
+saf.linear.solver                | I | Time integrator: dopri5
+saf.linear.solver                | I | dt=0.010000
+saf.euler1d.linear.asciiwriter   | W | `save_profile` is not implemented.
+saf.linear.solver                | I | Start: unsteady computation
+saf.linear.solver                | I | Finish: unsteady computation
+saf.linear.solver                | I | Current time == final time

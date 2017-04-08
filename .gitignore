@@ -1,0 +1,14 @@
+# Python artifacts
+__pycache__
+
+# Assets
+*/_assets/
+
+# Jupyter Notebook internal stuff. 
+*/.ipynb_checkpoints/
+
+# Solver's code.
+code/
+
+# Build directories.
+build*
