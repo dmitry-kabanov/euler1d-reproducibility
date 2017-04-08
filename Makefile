@@ -8,7 +8,8 @@ endif
 
 # List of all numerical experiments.
 experiments := znd-solutions \
-			   dmd-synthetic-data
+               dmd-synthetic-data \
+               perturbations
 
 # Set PYTHONPATH to be able to use the solver's code and helpers.
 export PYTHONPATH := ../code:..
@@ -41,3 +42,4 @@ clean :
 
 include znd-solutions/makefile.mk
 include dmd-synthetic-data/makefile.mk
+include perturbations/makefile.mk
