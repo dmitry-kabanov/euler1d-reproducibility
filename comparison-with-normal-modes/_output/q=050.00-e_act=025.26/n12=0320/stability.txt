@@ -1,0 +1,7 @@
+# Format: real(eigenvalue), imag(eigenvalue), real(amplitude), imag(amplitude)
+-1.7486554010732354e-04 5.3047495531693312e-01 -1.8259499458008577e-01 9.4495242745324504e-02
+---
+Detonation is (almost) stable.
+Tolerance of growth rate is 1.000000e-03.
+Error of residual Y - AX: 6.755817e-09
+Error of fit: 1.083075e-06
