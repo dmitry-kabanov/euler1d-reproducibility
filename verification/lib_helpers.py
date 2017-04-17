@@ -70,7 +70,7 @@ def print_convergence_table_latex(resolutions, errors_LInf_rel, filename=None):
         r'  S[table-format=1.2]}',
         r'\toprule',
         r'\multicolumn{1}{c}{$N_{1/2}$} & ',
-        r'\multicolumn{1}{c}{$E_{\infty}$} & ',
+        r'\multicolumn{1}{c}{$E$} & ',
         r'\multicolumn{1}{c}{$r_{\text{acc}}$} \\',
         r'\midrule',
     ]

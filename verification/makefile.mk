@@ -10,5 +10,5 @@ ${exp} : ${BUILD_DIR}/${asset}
 ${BUILD_DIR}/${asset} : ${exp}/_assets/${asset}
 	cp $< $@
 
-${exp}/_assets/${asset} : ${exp}/${script} ${data} ${matplotlibrc_file}
+${exp}/_assets/${asset} : ${exp}/${script} ${exp}/lib_helpers.py ${data}
 	cd ${<D} && python ${<F}
