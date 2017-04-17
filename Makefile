@@ -1,6 +1,6 @@
 # Main Makefile for the repository of computational experiments
 # based on euler1d code.
- 
+
 # Check that BUILD_DIR is given by a user as a command-line argument.
 ifndef BUILD_DIR
 $(error 'BUILD_DIR is not set. USAGE: make BUILD_DIR=<dirname>.')
@@ -9,7 +9,9 @@ endif
 # List of all numerical experiments.
 experiments := znd-solutions \
                dmd-synthetic-data \
-               perturbations
+               perturbations \
+               comparison-with-normal-modes \
+               verification
 
 # Set PYTHONPATH to be able to use the solver's code and helpers.
 export PYTHONPATH := ../code:..
@@ -43,3 +45,5 @@ clean :
 include znd-solutions/makefile.mk
 include dmd-synthetic-data/makefile.mk
 include perturbations/makefile.mk
+include comparison-with-normal-modes/makefile.mk
+include verification/makefile.mk
