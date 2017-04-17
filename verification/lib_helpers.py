@@ -18,42 +18,42 @@ def get_target_dirs_and_resolutions(Q=None, Eact=None):
     for d in dirs:
         if d.startswith('q={:06.2f}-e_act={:06.2f}'.format(Q, Eact)):
             target_dirs.append(d)
-        
+
     target_dirs.sort()
-    
+
     resolutions = []
     for d in target_dirs:
         chunks = d.split('=')
         resolutions.append(int(chunks[-1]))
-        
+
     return target_dirs, resolutions
 
 
 def get_rel_LInf_errors(target_dirs):
     d_list = []
-    
+
     for outdir in target_dirs:
         full_outdir = os.path.join('_output', outdir)
         r = ASCIIReader(full_outdir)
         __, d = r.get_time_and_detonation_velocity()
-        
+
         d_list.append(d)
 
     errors_LInf = [float('NaN')]
     for i, d in enumerate(d_list):
         if i == 0:
             continue
-    
+
         d_1 = d_list[i-1]
         d_2 = d_list[i]
-        
+
         error = linalg.norm(d_1 - d_2, np.Inf) / linalg.norm(d_2, np.Inf)
         errors_LInf.append(error)
-        
+
     assert len(target_dirs) == len(errors_LInf)
 
     errors_LInf_array = np.asarray(errors_LInf)
-    
+
     return errors_LInf_array
 
 
@@ -76,7 +76,7 @@ def print_convergence_table_latex(resolutions, errors_LInf_rel, filename=None):
     ]
     for i, r in enumerate(resolutions):
         err_rel = errors_LInf_rel[i]
-        
+
         if i >= 2:
             err_rel_repr = '{:8.2e}'.format(err_rel)
             err_rel_prev = errors_LInf_rel[i-1]
@@ -88,17 +88,16 @@ def print_convergence_table_latex(resolutions, errors_LInf_rel, filename=None):
         else:
             err_rel_repr = '{:8s}'.format(NAN_REPR)
             r_rel_repr = '{:4s}'.format(NAN_REPR)
-            
+
         lines.append(
             r'{:10d} & {:s} & {:s} \\'.format(r, err_rel_repr, r_rel_repr))
-        
+
     lines.append(r'\bottomrule')
     lines.append(r'\end{tabular}')
     lines.append('')  # To have final newline symbol.
-    
+
     if filename is None:
         return lines
     else:
         with open(os.path.join('_assets', filename), 'w') as f:
             f.write('\n'.join(lines))
-        
