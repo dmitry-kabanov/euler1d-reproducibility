@@ -13,3 +13,5 @@ def savefig(filename):
     if 'SAVE_FIGURES' in os.environ:
         filename = os.path.join(TARGET_DIR, filename)
         cur_fig.savefig(filename)
+    else:
+        plt.show()

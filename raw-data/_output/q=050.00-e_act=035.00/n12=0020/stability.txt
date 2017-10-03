@@ -1,0 +1,7 @@
+4.2324114727775464e-01 1.7954703497237490e-01
+5.0515889594516827e-01 4.3660769451410868e+00
+---
+Growth rate is positive. Unstable detonation.
+Tolerance of growth rate is 1.000000e-03.
+Error of residual Y - AX: 9.016839e-12
+Error of fit: 4.073793e-03

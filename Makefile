@@ -11,7 +11,10 @@ experiments := znd-solutions \
                dmd-synthetic-data \
                perturbations \
                comparison-with-normal-modes \
-               verification
+               verification \
+               raw-data \
+               eigval-neutral-curve \
+               eigval-znd-solutions
 
 # Set PYTHONPATH to be able to use the solver's code and helpers.
 export PYTHONPATH := ../code:..
@@ -47,3 +50,6 @@ include dmd-synthetic-data/makefile.mk
 include perturbations/makefile.mk
 include comparison-with-normal-modes/makefile.mk
 include verification/makefile.mk
+include raw-data/makefile.mk
+include eigval-neutral-curve/makefile.mk
+include eigval-znd-solutions/makefile.mk
