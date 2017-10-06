@@ -14,7 +14,8 @@ experiments := znd-solutions \
                verification \
                raw-data \
                eigval-neutral-curve \
-               eigval-znd-solutions
+               eigval-znd-solutions \
+			   eigval-migration-subsonic-supersonic
 
 # Set PYTHONPATH to be able to use the solver's code and helpers.
 export PYTHONPATH := ../code:..
@@ -53,3 +54,4 @@ include verification/makefile.mk
 include raw-data/makefile.mk
 include eigval-neutral-curve/makefile.mk
 include eigval-znd-solutions/makefile.mk
+include eigval-migration-subsonic-supersonic/makefile.mk
