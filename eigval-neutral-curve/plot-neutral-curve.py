@@ -112,6 +112,7 @@ plt.ylim((0.1, 100.0))
 plt.xlabel(r'Activation energy, $E$')
 plt.ylabel(r'Max heat release, $Q$')
 plt.legend(loc='best')
+plt.grid()
 plt.tight_layout(pad=0.1)
 
 if len(sys.argv) > 1:
