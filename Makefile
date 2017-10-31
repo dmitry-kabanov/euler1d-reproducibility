@@ -7,7 +7,8 @@ $(error 'BUILD_DIR is not set. USAGE: make BUILD_DIR=<dirname>.')
 endif
 
 # List of all numerical experiments.
-experiments := znd-solutions \
+experiments := neutral-curves \
+               znd-solutions \
                dmd-synthetic-data \
                perturbations \
                comparison-with-normal-modes \
@@ -46,6 +47,7 @@ ${BUILD_DIR} :
 clean :
 	${RM} ${assets_list}
 
+include neutral-curves/makefile.mk
 include znd-solutions/makefile.mk
 include dmd-synthetic-data/makefile.mk
 include perturbations/makefile.mk
