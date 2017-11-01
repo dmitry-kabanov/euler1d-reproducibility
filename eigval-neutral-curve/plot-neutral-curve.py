@@ -102,11 +102,13 @@ f_clean = np.array(f_list[idx])
 q_star_clean = np.array(q_star[idx])
 
 ls_data = np.loadtxt('_output/lee-stewart-fig7-digitized-data.txt')
+leestewart_q = ls_data[:, 1]
+leestewart_e = ls_data[:, 0]
 
 # Plot figure.
 fig = plt.figure()
 plt.semilogy(e_clean, q_star_clean, '-', label='Two-step chemistry')
-plt.semilogy(ls_data[:, 0], ls_data[:, 1], '--', label='One-step chemistry')
+plt.semilogy(leestewart_e, leestewart_q, '--', label='One-step chemistry')
 plt.xlim((0, 50))
 plt.ylim((0.1, 100.0))
 plt.xlabel(r'Activation energy, $E$')
@@ -120,3 +122,17 @@ if len(sys.argv) > 1:
     plt.savefig(fn)
 else:
     plt.show()
+
+# from scipy import interpolate
+# 
+# f = interpolate.interp1d(leestewart_q, leestewart_e, kind='cubic')
+# 
+# leestewart_q = ls_data[:, 1]
+# mask = (leestewart_q[-1] <= q_star_clean) & (q_star_clean <= leestewart_q[0])
+# delta_e = f(q_star_clean[mask]) - e_clean[mask]
+# 
+# fig = plt.figure()
+# plt.semilogy(q_star_clean[mask], delta_e, '-')
+# plt.xlabel('Q')
+# plt.ylabel('E')
+# plt.show()
