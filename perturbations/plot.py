@@ -123,9 +123,9 @@ def plot_profiles_grouped_by_Q(vs_x=True):
     fig.tight_layout(pad=0.1)
 
     if vs_x:
-        outfile = 'perturbation-profiles-vs-x-grouped-by-Q.pdf'
+        outfile = 'perturbations-vs-x.pdf'
     else:
-        outfile = 'perturbation-profiles-vs-znd-lambda-grouped-by-Q.pdf'
+        outfile = 'perturbations-vs-znd-lambda.pdf'
 
     savefig(outfile)
 
