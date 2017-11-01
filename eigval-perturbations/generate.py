@@ -4,15 +4,13 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 
+from matplotlib.ticker import FormatStrFormatter
+
 from helpers import savefig
 
 
-# In[12]:
-
 OUTDIR = '_output'
 
-
-# In[13]:
 
 # Helper functions for "Perturbation profiles".
 def plot_profiles_grouped_by_Q(vs_x=True):
@@ -25,7 +23,6 @@ def plot_profiles_grouped_by_Q(vs_x=True):
         ZND reaction progress variable.
 
     """
-    E_ACT = 25.00
     outdir_list = [
         # 'q_2=-1.0000000000000000e+00',
         # 'q_2=-1.0000000000000000e+01',
@@ -119,20 +116,29 @@ def plot_profiles_grouped_by_Q(vs_x=True):
         axes[2, 1].set_xlabel(r'$\bar{\lambda}$')
 
     if vs_x:
-        x_lim = -8
-        axes[0, 0].set_xlim((-10, 0))
-        axes[0, 1].set_xlim((-10, 0))
+        axes[0, 0].set_xlim((-9, 0))
+        axes[0, 1].set_xlim((-9, 0))
         axes[1, 0].set_xlim((-5, 0))
         axes[1, 1].set_xlim((-5, 0))
         axes[2, 0].set_xlim((-8, 0))
         axes[2, 1].set_xlim((-8, 0))
 
+    fmt = FormatStrFormatter('%.e')
+
+    for i in [0, 1, 2]:
+        for j in [0, 1]:
+            y = axes[i, j].yaxis
+            y.set_ticks(y.get_ticklocs()[::2])
+            y.set_major_formatter(fmt)
+            x = axes[i, j].xaxis
+            x.set_ticks(x.get_ticklocs()[::2])
+
     fig.tight_layout(pad=0.1)
 
     if vs_x:
-        outfile = 'perturbation-profiles-vs-x-grouped-by-Q.pdf'
+        outfile = 'eigval-perturbations-vs-x.pdf'
     else:
-        outfile = 'perturbation-profiles-vs-znd-lambda-grouped-by-Q.pdf'
+        outfile = 'eigval-perturbations-vs-znd-lambda.pdf'
 
     savefig(outfile)
 

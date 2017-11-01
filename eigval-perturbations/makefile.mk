@@ -1,6 +1,6 @@
-exp     := perturbations
-asset_1 := perturbation-profiles-vs-x-grouped-by-Q.pdf
-asset_2 := perturbation-profiles-vs-znd-lambda-grouped-by-Q.pdf
+exp     := eigval-perturbations
+asset_1 := eigval-perturbations-vs-x.pdf
+asset_2 := eigval-perturbations-vs-znd-lambda.pdf
 
 script := generate.py
 data   := $(wildcard ${exp}/_output/*)
