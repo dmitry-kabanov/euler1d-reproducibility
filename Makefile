@@ -33,6 +33,8 @@ export matplotlibrc_file := ${MATPLOTLIBRC}/matplotlibrc
 
 RM := rm -f
 
+plot_scripts := $(shell find . -name "plot*.py")
+
 # List of assets.
 assets_list :=
 
@@ -47,6 +49,10 @@ ${BUILD_DIR} :
 .PHONY : clean
 clean :
 	${RM} ${assets_list}
+
+# Generic rule to make sure that all plot scripts depend on helpers module.
+${plot_scripts} : helpers.py
+	touch $@
 
 include neutral-curves/makefile.mk
 include znd-solutions/makefile.mk
