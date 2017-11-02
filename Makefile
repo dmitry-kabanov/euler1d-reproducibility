@@ -6,6 +6,8 @@ ifndef BUILD_DIR
 $(error 'BUILD_DIR is not set. USAGE: make BUILD_DIR=<dirname>.')
 endif
 
+include config.mk
+
 # List of all numerical experiments.
 experiments := neutral-curves \
                znd-solutions \
