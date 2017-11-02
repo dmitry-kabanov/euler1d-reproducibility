@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 
 from saf.euler1d_eigval.linear import ASCIIReader
 
+from helpers import FIGSIZE_NORMAL as figsize, savefig
+
 FMT_UNSIGNED = '22.16e'
 FMT_SIGNED = '+22.16e'
 
@@ -106,33 +108,15 @@ leestewart_q = ls_data[:, 1]
 leestewart_e = ls_data[:, 0]
 
 # Plot figure.
-fig = plt.figure()
+fig = plt.figure(figsize=figsize)
 plt.semilogy(e_clean, q_star_clean, '-', label='Two-step chemistry')
 plt.semilogy(leestewart_e, leestewart_q, '--', label='One-step chemistry')
 plt.xlim((0, 50))
 plt.ylim((0.1, 100.0))
 plt.xlabel(r'Activation energy, $E$')
 plt.ylabel(r'Max heat release, $Q$')
-plt.legend(loc='best')
+#plt.legend(loc='best')
 plt.grid()
 plt.tight_layout(pad=0.1)
 
-if len(sys.argv) > 1:
-    fn = os.path.join('_assets', 'eigval-neutral-curve-gamma=1.2.pdf')
-    plt.savefig(fn)
-else:
-    plt.show()
-
-# from scipy import interpolate
-# 
-# f = interpolate.interp1d(leestewart_q, leestewart_e, kind='cubic')
-# 
-# leestewart_q = ls_data[:, 1]
-# mask = (leestewart_q[-1] <= q_star_clean) & (q_star_clean <= leestewart_q[0])
-# delta_e = f(q_star_clean[mask]) - e_clean[mask]
-# 
-# fig = plt.figure()
-# plt.semilogy(q_star_clean[mask], delta_e, '-')
-# plt.xlabel('Q')
-# plt.ylabel('E')
-# plt.show()
+savefig('eigval-neutral-curve-gamma=1.2.pdf')
