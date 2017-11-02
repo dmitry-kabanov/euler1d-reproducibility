@@ -4,7 +4,7 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 
-from helpers import savefig
+from helpers import FIGSIZE_SIX_SUBPLOTS as figsize, savefig
 
 
 # In[12]:
@@ -34,7 +34,7 @@ def plot_profiles_grouped_by_Q(vs_x=True):
 
     outdir_list = [os.path.join(OUTDIR, x) for x in outdir_list]
 
-    fig, axes = plt.subplots(3, 2, figsize=(6, 6))
+    fig, axes = plt.subplots(3, 2, figsize=figsize)
 
     styles = ['-', '--', '-.']
 

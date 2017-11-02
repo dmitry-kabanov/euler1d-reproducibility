@@ -3,9 +3,9 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 
-from helpers import savefig
 from saf.euler1d.linear.asciireader import ASCIIReader
 
+from helpers import FIGSIZE_SIX_SUBPLOTS as figsize, savefig
 
 # ---
 # ## Helper functions
@@ -60,7 +60,7 @@ def znd_plot_data(x, rho, u, p, lamda):
     E_ACT = 30.0
     X_LIM = -8
     
-    fig, axes = plt.subplots(nrows=m, ncols=n, figsize=(6, 6))
+    fig, axes = plt.subplots(nrows=m, ncols=n, figsize=figsize)
 
     assert len(x) == len(rho)
     assert len(x) == len(u)

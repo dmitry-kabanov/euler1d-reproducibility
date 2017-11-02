@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 
 from saf.euler1d_eigval.linear import ASCIIReader
 
+from helpers import FIGSIZE_SIX_SUBPLOTS as figsize
+
 
 # Format for floating-point numbers.
 FMT = '+22.16e'
@@ -54,7 +56,7 @@ def znd_plot_data(x, rho, u, p, lamda_1, lamda_2, r=50):
     m, n = 3, 2
     X_LIM = -8
 
-    fig, axes = plt.subplots(nrows=m, ncols=n, figsize=(6, 6))
+    fig, axes = plt.subplots(nrows=m, ncols=n, figsize=figsize)
 
     # Density
     ax = axes[0, 0]

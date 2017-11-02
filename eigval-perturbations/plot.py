@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 from matplotlib.ticker import FormatStrFormatter
 
-from helpers import savefig
+from helpers import FIGSIZE_SIX_SUBPLOTS as figsize, savefig
 
 
 OUTDIR = '_output'
@@ -35,7 +35,7 @@ def plot_profiles_grouped_by_Q(vs_x=True):
 
     outdir_list = [os.path.join(OUTDIR, x) for x in outdir_list]
 
-    fig, axes = plt.subplots(3, 2, figsize=(6, 6))
+    fig, axes = plt.subplots(3, 2, figsize=figsize)
 
     styles = ['-', '--', '-.']
 

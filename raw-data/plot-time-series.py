@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 from saf.euler1d.linear.asciireader import ASCIIReader
 from matplotlib.ticker import FormatStrFormatter
 
+from helpers import FIGSIZE_TWO_SUBPLOTS_TWO_ROWS as figsize
+
 
 r_35 = ASCIIReader('_output/q=050.00-e_act=035.00/n12=0640')
 r_40 = ASCIIReader('_output/q=050.00-e_act=040.00/n12=0640')
@@ -14,7 +16,7 @@ r_40 = ASCIIReader('_output/q=050.00-e_act=040.00/n12=0640')
 t_35, d_35 = r_35.get_time_and_detonation_velocity()
 t_40, d_40 = r_40.get_time_and_detonation_velocity()
 
-fig, ax = plt.subplots(nrows=2, ncols=1)
+fig, ax = plt.subplots(nrows=2, ncols=1, figsize=figsize)
 ax[0].plot(t_35, d_35, '-')
 ax[0].set_xlim((0, 50))
 ax[0].set_ylim((-0.1, 0.85))
