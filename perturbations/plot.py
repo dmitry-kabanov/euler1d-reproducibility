@@ -120,6 +120,17 @@ def plot_profiles_grouped_by_Q(vs_x=True):
         axes[2, 0].set_xlim((x_lim, 0))
         axes[2, 1].set_xlim((x_lim, 0))
 
+        text = [
+            ['(a)', '(b)'],
+            ['(c)', '(d)'],
+            ['(e)', '(f)'],
+        ]
+        for i in [0, 1, 2]:
+            for j in [0, 1]:
+                cur_axes = axes[i, j]
+                x, y = 0.1, 0.9
+                cur_axes.text(x, y, text[i][j], transform=cur_axes.transAxes)
+
     fig.tight_layout(pad=0.1)
 
     if vs_x:

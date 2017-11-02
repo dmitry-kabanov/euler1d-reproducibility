@@ -25,11 +25,13 @@ ax[0].set_xlabel(r'$t$')
 ax[0].set_ylabel(r"$\psi '$")
 f_1_x = FormatStrFormatter('%6.1f')
 ax[0].yaxis.set_major_formatter(f_1_x)
+ax[0].text(0.9, 0.85, '(a)', transform=ax[0].transAxes)
 
 ax[1].plot(t_40, d_40, '-')
 ax[1].set_ylim((-100, 2000))
 ax[1].set_ylabel(r"$\psi '$")
 ax[1].set_xlabel(r'$t$')
+ax[1].text(0.9, 0.85, '(b)', transform=ax[1].transAxes)
 
 fig.tight_layout(pad=0.1)
 
