@@ -23,3 +23,7 @@ ${exp}/_assets/${asset_1} : ${exp}/${script_1} ${data_1} ${matplotlibrc_file}
 
 ${exp}/_assets/${asset_2} : ${exp}/${script_2} ${data_2} ${matplotlibrc_file}
 	cd ${<D} && python ${<F}
+
+${exp}/${script_1} : ${exp}/lib_eigval_znd_solutions.py
+
+${exp}/${script_2} : ${exp}/lib_eigval_znd_solutions.py
