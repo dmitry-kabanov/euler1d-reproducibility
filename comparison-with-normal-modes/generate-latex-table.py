@@ -67,7 +67,7 @@ def build_table_section(e_act=None, label='', nm=None):
 
     lines.append(r'\midrule')
     lines.append(r'\addlinespace')
-    lines.append(r'\multicolumn{7}{l}{$E_{\text{act}}=' + str(e_act) +
+    lines.append(r'\multicolumn{7}{l}{$E=' + str(e_act) +
                  label + r'$} \\')
 
     for i, __ in enumerate(eigvals_computed):
