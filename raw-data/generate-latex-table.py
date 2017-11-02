@@ -81,7 +81,8 @@ lines = build_table_header() + \
         build_table_footer()
 
 if len(sys.argv) > 1:
-    outfile = os.path.join('_assets', 'raw-data-modes.tex')
+    outfile = sys.argv[-1]
+    outfile = os.path.join('_assets', outfile)
     with open(outfile, 'w') as f:
         f.write('\n'.join(lines))
 else:
