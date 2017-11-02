@@ -136,7 +136,7 @@ def plot_profiles_grouped_by_Q(vs_x=True):
     fig.tight_layout(pad=0.1)
 
     if vs_x:
-        outfile = 'eigval-perturbations-vs-x.pdf'
+        outfile = 'eigval-perturbations.pdf'
     else:
         outfile = 'eigval-perturbations-vs-znd-lambda.pdf'
 

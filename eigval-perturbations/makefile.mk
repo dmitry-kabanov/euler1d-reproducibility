@@ -1,5 +1,5 @@
 exp     := eigval-perturbations
-asset_1 := eigval-perturbations-vs-x.pdf
+asset_1 := eigval-perturbations.pdf
 asset_2 := eigval-perturbations-vs-znd-lambda.pdf
 
 script := ${exp}/plot.py
