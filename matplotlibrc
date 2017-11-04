@@ -1,6 +1,6 @@
 axes.linewidth    : 1
 axes.labelpad     : 1
-axes.prop_cycle   : cycler('color', ['2980B9', '27AE60', 'C0392B', '2C3E50', '8E44AD'])
+axes.prop_cycle   : cycler('color', ['2980B9', '27AE60', 'C0392B', '2C3E50', '8E44AD', 'D35400'])
 backend           : qt5agg
 figure.figsize    : 6, 4
 font.family       : Helvetica
