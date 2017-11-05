@@ -1,7 +1,0 @@
-# Format: real(eigenvalue), imag(eigenvalue)
- 6.1079790292913494e-02 5.2227651723763080e-01
----
-Growth rate is positive. Unstable detonation.
-Tolerance of growth rate is 1.000000e-03.
-Error of residual Y - AX: 8.137366e-16
-Error of fit: 2.355755e-06

@@ -18,7 +18,7 @@ experiments := neutral-curves \
                raw-data \
                eigval-neutral-curve \
                eigval-znd-solutions \
-               eigval-migration-subsonic-supersonic \
+               eigval-migration \
                eigval-perturbations
 
 # Set PYTHONPATH to be able to use the solver's code and helpers.
@@ -65,5 +65,5 @@ include verification/makefile.mk
 include raw-data/makefile.mk
 include eigval-neutral-curve/makefile.mk
 include eigval-znd-solutions/makefile.mk
-include eigval-migration-subsonic-supersonic/makefile.mk
+include eigval-migration/makefile.mk
 include eigval-perturbations/makefile.mk
