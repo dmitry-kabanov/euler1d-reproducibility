@@ -60,38 +60,42 @@ def get_rel_LInf_errors(target_dirs):
 def print_convergence_table_latex(resolutions, errors_LInf_rel, filename=None):
     """Print table resolution versus error in :math:`L_\infty`-norm."""
     NAN_REPR = '{N/A}'
-    lines = [
-        r'\begin{tabular}{',
-        r'  r',
-        r'  S[table-format=1.2,',
-        r'    table-figures-exponent=2,',
-        r'    table-sign-mantissa,',
-        r'    table-sign-exponent]',
-        r'  S[table-format=1.2]}',
-        r'\toprule',
-        r'\multicolumn{1}{c}{$N_{1/2}$} & ',
-        r'\multicolumn{1}{c}{$E$} & ',
-        r'\multicolumn{1}{c}{$r_{\text{acc}}$} \\',
-        r'\midrule',
-    ]
+
+    err_list = []
+    r_list = []
     for i, r in enumerate(resolutions):
         err_rel = errors_LInf_rel[i]
 
         if i >= 2:
-            err_rel_repr = '{:8.2e}'.format(err_rel)
+            err_rel_repr = '\\num{{{:8.0e}}}'.format(err_rel)
             err_rel_prev = errors_LInf_rel[i-1]
             r_rel = np.log(err_rel_prev / err_rel) / np.log(2)
             r_rel_repr = '{:4.2f}'.format(r_rel)
         elif i == 1:
-            err_rel_repr = '{:8.2e}'.format(err_rel)
+            err_rel_repr = '\\num{{{:8.0e}}}'.format(err_rel)
             r_rel_repr = '{:4s}'.format(NAN_REPR)
         else:
             err_rel_repr = '{:8s}'.format(NAN_REPR)
             r_rel_repr = '{:4s}'.format(NAN_REPR)
 
-        lines.append(
-            r'{:10d} & {:s} & {:s} \\'.format(r, err_rel_repr, r_rel_repr))
+        err_list.append(err_rel_repr)
+        r_list.append(r_rel_repr)
 
+    line_res = (
+        r'$N_{1/2}$ & ' + 
+        ' & '.join([str(r) for r in resolutions]) +
+        r' \\')
+    line_err = r'$E$ & ' + ' & '.join(err_list) + r' \\'
+    line_r = r'$r_{\text{acc}}$ & ' + ' & '.join(r_list) + r' \\'
+
+    lines = []
+    line_header = r'\begin{tabular}{l' + len(resolutions)*'c' + r'} \\'
+
+    lines.append(line_header)
+    lines.append(r'\toprule')
+    lines.append(line_res)
+    lines.append(line_err)
+    lines.append(line_r)
     lines.append(r'\bottomrule')
     lines.append(r'\end{tabular}')
     lines.append('')  # To have final newline symbol.
