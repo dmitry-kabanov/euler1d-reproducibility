@@ -8,7 +8,7 @@ import shutil
 import matplotlib.pyplot as plt
 import numpy as np
 
-from helpers import FIGSIZE_LARGER as figsize, savefig
+from helpers import FIGSIZE_NORMAL as figsize, savefig
 
 from lib_postprocessing import (process_subsonic_supersonic as p_super,
                                 process_subsonic_subsonic as p_sub)
