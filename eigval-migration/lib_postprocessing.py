@@ -354,4 +354,6 @@ def process_subsonic_supersonic(outdir):
         'upper': exponential_rates_upper,
     }
 
-    return q_values, rate_0, other_rates
+    freq_0 = np.array(freq_0)
+
+    return q_values, rate_0, other_rates, freq_0, other_freqs

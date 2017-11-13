@@ -26,7 +26,7 @@ dir_sub = os.path.join(tempdir, '_output/subsonic-subsonic')
 dir_super = os.path.join(tempdir, '_output/subsonic-supersonic')
 
 q_sub, rate_0_sub, rates_sub = p_sub(dir_sub)
-q_super, rate_0_super, rates_super = p_super(dir_super)
+q_super, rate_0_super, rates_super, __, __ = p_super(dir_super)
 
 shutil.rmtree(tempdir)
 
