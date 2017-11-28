@@ -18,23 +18,19 @@ def build_table_header():
     return [
         r'\begin{tabular}{',
         r'S[table-format=2.0]',
-        r'S[table-format=2.5]  % Growth rate',
-        r'S[table-format=1.0e+2]  % Growth rate error',
-        r'S[table-format=2.5]     % Frequency',
-        r'S[table-format=1.0e+2]  % Frequency error',
+        r'S[table-format=2.3]  % Growth rate',
+        r'S[table-format=2.3]     % Frequency',
         r'S[table-format=2.5]     % Growth rate',
         r'S[table-format=2.5]     % Frequency',
         r'}',
         r'\toprule',
         r'  &',
-        r'\multicolumn{4}{c}{Present work} &',
+        r'\multicolumn{2}{c}{Present work} &',
         r'\multicolumn{2}{c}{Normal-mode analysis} \\',
-        r'\cmidrule(r){2-5} \cmidrule{6-7}',
+        r'\cmidrule(r){2-3} \cmidrule{4-5}',
         r'{$i$} &',
         r'{$\alpha_{\text{re}}$} &',
-        r'{$e_{\text{re}}$} &',
         r'{$\alpha_{\text{im}}$} &',
-        r'{$e_{\text{im}}$} &',
         r'{$\alpha_{\text{re}}$} &',
         r'{$\alpha_{\text{im}}$} \\',
     ]
@@ -78,9 +74,9 @@ def build_table_section(e_act=None, label='', nm=None):
                 e_t[key] = NOT_AVAIL
         err = errors[i]
         lines.append(
-            r'{:} & {:.5f} & {:1.0e} & {:.5f} & {:1.0e} & {} & {} \\'.format(
-                index, e_c['growth_rate'], err['growth_rate'],
-                e_c['frequency'], err['frequency'],
+            r'{:} & {:.3f} & {:.3f} & {} & {} \\'.format(
+                index, e_c['growth_rate'],
+                e_c['frequency'], 
                 e_t['growth_rate'], e_t['frequency']))
 
     return lines
@@ -124,7 +120,7 @@ freq = [0.000, 4.372, 8.333, 12.16, 15.96, 19.74, 23.53,
 
 # Normal modes for e_act=50 case.
 # The lower branch of the fundamental mode is not specified in Lee&Stewart1990.
-normal_modes_4 = [{'growth_rate': 'nan', 'frequency': 'nan'}]
+normal_modes_4 = [{'growth_rate': '0.084', 'frequency': '0.000'}]
 
 for i, __ in enumerate(rate):
     r = rate[i]
@@ -140,10 +136,10 @@ for i, __ in enumerate(rate):
     normal_modes_4.append({'growth_rate': r_repr, 'frequency': f_repr})
 
 lines = build_table_header() + \
-        build_table_section(e_act=25.26, label='^{*}', nm=normal_modes_1) + \
-        build_table_section(e_act=26.00, label='^{**}', nm=normal_modes_2) + \
-        build_table_section(e_act=31.05, label='^{*}', nm=normal_modes_3) + \
-        build_table_section(e_act=50.00, label='^{***}', nm=normal_modes_4) + \
+        build_table_section(e_act=25.26, label='', nm=normal_modes_1) + \
+        build_table_section(e_act=26.00, label='', nm=normal_modes_2) + \
+        build_table_section(e_act=31.05, label='', nm=normal_modes_3) + \
+        build_table_section(e_act=50.00, label='', nm=normal_modes_4) + \
         build_table_footer()
 
 if len(sys.argv) > 1:

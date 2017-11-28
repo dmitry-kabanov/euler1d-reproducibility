@@ -1,0 +1,27 @@
+saf.euler1d_eigval.common.zndsol | I | Start: compute ZND parameters
+saf.euler1d_eigval.common.zndsol | I | lamda_1_star: 0.8111243971624382
+saf.euler1d_eigval.common.zndsol | I | lamda_2_star: 0.49633172576650186
+saf.euler1d_eigval.common.zndsol | I | D_CJ: 4.9928499701259508
+saf.euler1d_eigval.common.zndsol | I | D: 4.9928499701259508
+saf.euler1d_eigval.common.zndsol | I | Arrhenius prefactor 1: 250.1636150041842939
+saf.euler1d_eigval.common.zndsol | I | Reaction length: 6.5079909516634675
+saf.euler1d_eigval.common.zndsol | I | Finish: compute ZND parameters
+saf.linear.solver                | I | dx=0.001563
+saf.linear.solver                | I | domain_length=7.000000
+saf.linear.solver                | I | Grid resolution is 4480
+saf.linear.henrickapproximator   | I | Use Upwind5
+saf.linear.upwind5               | I | Use upwind5_impl_c
+saf.linear.henrickapproximator   | I | Use global Lax-Friedrichs flux
+saf.linear.henrickapproximator   | I | Use NearShockApproximator (Henrick2006 approach)
+saf.euler1d_eigval.common.zndsol | I | Start ZND structure computation
+saf.euler1d_eigval.common.zndsol | I | Integrate with VODE (BDF5), tolerances 1e-15
+saf.euler1d_eigval.common.zndsol | I | Compute steady derivatives for CJ case
+saf.euler1d_eigval.common.zndsol | I | Validating ZND quantities
+saf.euler1d_eigval.common.zndsol | W | Add checks for ZND reaction rate derivs
+saf.euler1d_eigval.common.zndsol | I | Finish ZND structure computation
+saf.euler1d_eigval.linear.proble | W | for LLF make sure that the eigvals are ordered correctly.
+saf.linear.solver                | I | Time integrator: dopri5
+saf.linear.solver                | I | dt=0.005000
+saf.linear.solver                | I | Start: unsteady computation
+saf.linear.solver                | I | Finish: unsteady computation
+saf.linear.solver                | I | Current time == final time

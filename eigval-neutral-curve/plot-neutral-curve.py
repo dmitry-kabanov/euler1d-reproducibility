@@ -109,13 +109,13 @@ leestewart_e = ls_data[:, 0]
 
 # Plot figure.
 fig = plt.figure(figsize=figsize)
-plt.semilogy(e_clean, q_star_clean, '-', label='Two-step chemistry')
-plt.semilogy(leestewart_e, leestewart_q, '--', label='One-step chemistry')
+plt.semilogy(e_clean, q_star_clean, '-', label='Two-step')
+plt.semilogy(leestewart_e, leestewart_q, '--', label='One-step')
 plt.xlim((0, 50))
 plt.ylim((0.1, 100.0))
 plt.xlabel(r'Activation energy, $E$')
 plt.ylabel(r'Max heat release, $Q$')
-#plt.legend(loc='best')
+plt.legend(loc='best')
 plt.grid()
 plt.tight_layout(pad=0.1)
 
