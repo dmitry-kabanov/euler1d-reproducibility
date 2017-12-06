@@ -10,10 +10,12 @@ import sys
 import timeit
 
 import numpy as np
-
-from scipy import integrate
+import matplotlib.pyplot as plt
 
 from saf.linear.postprocessor import Postprocessor
+from saf.linear import dmd
+
+from helpers import FIGSIZE_TWO_SUBPLOTS_ONE_ROW as figsize, savefig
 
 
 # In[13]:
@@ -21,9 +23,11 @@ from saf.linear.postprocessor import Postprocessor
 def print_latex_table(true_eigvals_list, appr_eigvals_list):
     print(r'\begin{tabular}{crrrr}')
     print(r'\toprule')
-    print(r'\multicolumn{1}{c}{Example} & \multicolumn{1}{c}{\(\hat{\gamma}\)} & '
-          r'\multicolumn{1}{c}{\(\hat{\omega}\)} & \multicolumn{1}{c}{\(e_{\gamma}\)} & '
-          r'\multicolumn{1}{c}{\(e_{\omega}\)} \\')
+    print(r'\multicolumn{1}{c}{Example} & '
+          r'\multicolumn{1}{c}{\(\hat{\alpha}_\text{re}\)} & '
+          r'\multicolumn{1}{c}{\(\hat{\alpha}_\text{im}\)} & '
+          r'\multicolumn{1}{c}{\(e_\text{re}\)} & '
+          r'\multicolumn{1}{c}{\(e_\text{im}\)} \\')
     for k in range(2):
         print(r'\midrule')
         true_eigvals = true_eigvals_list[k]
@@ -98,16 +102,53 @@ def dmd_synth_data():
     ])
 
     t_2, y_2 = generate_synthetic_example(tfinal_2, true_eigvals_2)
-    
+
     p_2 = Postprocessor(t_2, y_2)
     appr_eigvals_2, error_res_2, error_fit_2 = p_2.extract_stability_info()
 
-    print('Saving results into `_assets/dmd-synthetic-data.tex`')
-    cur_stdout = sys.stdout
-    filename = os.path.join('_assets', 'dmd-synthetic-data.tex')
-    sys.stdout = open(filename, 'w')
-    print_latex_table([true_eigvals_1, true_eigvals_2], [appr_eigvals_1, appr_eigvals_2])
-    sys.stdout = cur_stdout
+    if len(sys.argv) > 1:
+        L = p_2._L
+        amps = p_2.amps
+        spectrum_dmd = dmd.get_amplitude_spectrum(appr_eigvals_2, amps, L)
+        freq_dmd, amps_dmd = spectrum_dmd
+
+        N = len(y_1)
+        dt = (t_2[-1] - t_2[0])/(len(t_2) - 1.0)
+        yhat = np.fft.rfft(y_2)
+        freq_fft = np.fft.rfftfreq(N, dt)
+        # We multiply by 2, because positive and negative sides, but we plot
+        # only positive side.
+        # See http://www.mathworks.com/matlabcentral/answers/162846-amplitude-of-signal-after-fft-operation
+        amps_fft = 2 * abs(yhat) / N
+
+        # Rescale frequencies to be angular frequencies instead of linear.
+        freq_dmd *= 2 * np.pi
+        freq_fft *= 2 * np.pi
+
+        fig, (ax_1, ax_2) = plt.subplots(nrows=1, ncols=2, figsize=figsize)
+        ax_1.ticklabel_format(style='scientific')
+        ax_1.plot(t_2, y_2, '-')
+        ax_1.set_xlim(0, 21)
+        ax_1.set_xlabel(r'$t$')
+        ax_1.set_ylabel(r'$y_2$')
+        ax_1.text(0.85, 0.8, '(a)', transform=ax_1.transAxes)
+        ax_2.semilogy(freq_fft, amps_fft, '-')
+        ax_2.semilogy(spectrum_dmd[0], spectrum_dmd[1], 'o')
+        ax_2.set_xlim(0, 16)
+        ax_2.set_ylim(1e-12, None)
+        ax_2.set_xlabel('Frequency')
+        ax_2.set_ylabel('Amplitude')
+        ax_2.set_yticks(np.logspace(-1, -11, num=6))
+        ax_2.text(0.85, 0.8, '(b)', transform=ax_2.transAxes)
+        fig.tight_layout(pad=0.1, w_pad=1)
+        savefig('dmd-synthetic-data-spectrum.pdf')
+    else:
+        print('Saving results into `_assets/dmd-synthetic-data.tex`')
+        cur_stdout = sys.stdout
+        filename = os.path.join('_assets', 'dmd-synthetic-data.tex')
+        sys.stdout = open(filename, 'w')
+        print_latex_table([true_eigvals_1, true_eigvals_2], [appr_eigvals_1, appr_eigvals_2])
+        sys.stdout = cur_stdout
     
     print('Timing algorithm using Example 1')
     REPEAT = 3
