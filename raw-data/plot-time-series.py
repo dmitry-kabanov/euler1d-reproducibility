@@ -36,7 +36,7 @@ ax[1].text(0.9, 0.85, '(b)', transform=ax[1].transAxes)
 fig.tight_layout(pad=0.1)
 
 first_stage_time = 35
-inset_1 = fig.add_axes([0.29, .79, .45, .2])
+inset_1 = fig.add_axes([0.29, .77, .45, .2])
 f_1 = FormatStrFormatter('%1.0e')
 inset_1.plot(t_35[t_35<=first_stage_time], d_35[t_35<=first_stage_time], '-')
 inset_1.yaxis.set_major_formatter(f_1)
@@ -47,7 +47,7 @@ inset_1.set_yticks([-2e-4, 2e-4, 6e-4])
 
 # Second inset.
 first_stage_time_2 = 10
-inset_2 = fig.add_axes([0.29, .27, .45, .2])
+inset_2 = fig.add_axes([0.29, .25, .45, .2])
 f_2 = FormatStrFormatter('%1.0e')
 inset_2.plot(t_40[t_40<=first_stage_time_2], d_40[t_40<=first_stage_time_2], '-')
 inset_2.yaxis.set_major_formatter(f_2)
