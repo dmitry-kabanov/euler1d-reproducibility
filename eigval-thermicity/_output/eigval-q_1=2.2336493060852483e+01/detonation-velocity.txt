@@ -1,0 +1,2 @@
+# First column is time, second column is the perturbation of detonation velocity.
+  0.0000000000000000e+00   1.0000000000000000e-10

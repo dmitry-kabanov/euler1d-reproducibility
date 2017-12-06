@@ -19,7 +19,8 @@ experiments := neutral-curves \
                eigval-neutral-curve \
                eigval-znd-solutions \
                eigval-migration \
-               eigval-perturbations
+               eigval-perturbations \
+               eigval-thermicity
 
 # Set PYTHONPATH to be able to use the solver's code and helpers.
 export PYTHONPATH := ../code:..
@@ -67,3 +68,4 @@ include eigval-neutral-curve/makefile.mk
 include eigval-znd-solutions/makefile.mk
 include eigval-migration/makefile.mk
 include eigval-perturbations/makefile.mk
+include eigval-thermicity/makefile.mk
